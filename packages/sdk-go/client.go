@@ -53,9 +53,9 @@ type Config struct {
 }
 
 // NewClient creates a client with the default base URL (https://api.notifique.dev/v1).
-// Panics if apiKey is empty — use NewClientWithConfig to handle the error explicitly.
+// Panics if apiKey is empty.
 func NewClient(apiKey string) *Notifique {
-	c, err := NewClientWithConfig(Config{
+	c, err := NewClientWithConfigSafe(Config{
 		APIKey:  apiKey,
 		BaseURL: "https://api.notifique.dev/v1",
 	})
@@ -66,8 +66,18 @@ func NewClient(apiKey string) *Notifique {
 }
 
 // NewClientWithConfig creates a client with a custom configuration.
-// Returns nil and a non-nil error if config.APIKey is empty.
-func NewClientWithConfig(config Config) (*Notifique, error) {
+// Keeps the legacy signature to avoid breaking existing consumers.
+// Panics on invalid configuration. Use NewClientWithConfigSafe to handle errors explicitly.
+func NewClientWithConfig(config Config) *Notifique {
+	c, err := NewClientWithConfigSafe(config)
+	if err != nil {
+		panic(err)
+	}
+	return c
+}
+
+// NewClientWithConfigSafe creates a client with a custom configuration and explicit error handling.
+func NewClientWithConfigSafe(config Config) (*Notifique, error) {
 	if strings.TrimSpace(config.APIKey) == "" {
 		return nil, fmt.Errorf("notifique: APIKey must not be empty")
 	}

@@ -3,7 +3,15 @@
     "private": true,
     "description": "Notifique SDK Monorepo",
     "workspaces": [
-        "packages/*"
+        "packages/api",
+        "packages/core",
+        "packages/sdk-node",
+        "packages/sdk-python",
+        "packages/sdk-java",
+        "packages/sdk-go",
+        "packages/sdk-php",
+        "packages/sdk-elixir",
+        "packages/sdk-dotnet"
     ],
     "scripts": {
         "build": "npm run build --workspaces",

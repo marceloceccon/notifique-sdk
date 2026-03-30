@@ -11,7 +11,6 @@ Todos os SDKs utilizam `https://api.notifique.dev/v1` e compartilham a mesma arq
 | Linguagem | Pacote | Documentação |
 | :--- | :--- | :--- |
 | **Node.js / TypeScript** | `@notifique/core`, `@notifique/sdk-node` | [README](./packages/sdk-node/README.md) |
-| **n8n** | `n8n-nodes-notifique` | [README](./packages/n8n-nodes-notifique/README.md) |
 | **Python** | `notifique-sdk` | [README](./packages/sdk-python/README.md) |
 | **Java** | `com.notifique.sdk` | [README](./packages/sdk-java/README.md) |
 | **Go** | `github.com/notifique/notifique-sdk-go` | [README](./packages/sdk-go/README.md) |
@@ -133,8 +132,7 @@ notifique-sdk/
 │   ├── sdk-java/              # SDK Java
 │   ├── sdk-php/               # SDK PHP
 │   ├── sdk-elixir/            # SDK Elixir
-│   ├── sdk-dotnet/            # SDK .NET
-│   └── n8n-nodes-notifique/   # Node de comunidade do n8n
+│   └── sdk-dotnet/            # SDK .NET
 └── examples/                  # Exemplos de uso por linguagem
 ```
 
